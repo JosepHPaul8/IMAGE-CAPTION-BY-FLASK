@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Caption Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        img { max-width: 80%; height: auto; margin-top: 20px; }
+        .caption { font-size: 1.2em; margin-top: 10px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>🖼️ Upload an Image to Get a Caption</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <br><br>
+        <button type="submit">Generate Caption</button>
+    </form>
+
+    {% if image_url %}
+        <hr>
+        <img src="{{ url_for('static', filename='uploads/' + image_url) }}">
+        <div class="caption">Caption: "{{ caption }}"</div>
+    {% endif %}
+</body>
+</html>
